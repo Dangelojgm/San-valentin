@@ -4,6 +4,104 @@
   <meta charset="UTF-8">
   <title>Para mi amor</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #ffe6f0;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    /* POPUP A PANTALLA COMPLETA */
+    #love-popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .popup-box {
+      background: #fff;
+      padding: 20px 25px;
+      border-radius: 15px;
+      text-align: center;
+      max-width: 320px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+
+    .popup-box h2 {
+      margin-bottom: 10px;
+      color: #e91e63;
+    }
+
+    .popup-box p {
+      margin-bottom: 15px;
+    }
+
+    .popup-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      position: relative;
+      height: 40px; /* da espacio para que el NO se mueva */
+    }
+
+    .popup-buttons button {
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    #btn-yes {
+      background: #e91e63;
+      color: #fff;
+    }
+
+    #btn-no {
+      background: #ccc;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    /* CONTENIDO REAL DE LA PÁGINA (SE VE SOLO TRAS DAR SÍ) */
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+  <!-- POPUP -->
+  <div id="love-popup">
+    <div class="popup-box">
+      <h2>Una preguntita...</h2>
+      <p>¿Me amas con todo tu corazón? 🥺💖</p>
+      <div class="popup-buttons">
+        <button id="btn-yes">Sí, te amo</button>
+        <button id="btn-no">No</button>
+      </div>
+    </div>
+  </div>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Para mi amor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -50,5 +148,32 @@ Esta página y esta playlist son solo una forma pequeña de decirte algo enorme,
   <footer>
     <p>Con amor, tu novio 💌</p>
   </footer>
+  <script>
+    const popup = document.getElementById('love-popup');
+    const btnYes = document.getElementById('btn-yes');
+    const btnNo = document.getElementById('btn-no');
+
+    btnYes.addEventListener('click', () => {
+      popup.style.display = 'none';
+    });
+
+    btnNo.addEventListener('mouseenter', () => {
+      const container = btnNo.parentElement;
+      const maxX = container.clientWidth - btnNo.offsetWidth;
+      const maxY = container.clientHeight - btnNo.offsetHeight;
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+      btnNo.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    });
+
+    btnNo.addEventListener('click', () => {
+      btnNo.textContent = 'Bueno, sí 🥰';
+    });
+  </script>
 </body>
+</html>
+</body>
+</html>
+</body>
+
 </html>
